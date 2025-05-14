@@ -1,5 +1,5 @@
 ## Useful Links
-x z l/
+```xzl-ui/
 ├── apps/                        # 应用入口目录，包含实际的应用程序，如 Web 前端应用和 Docs（Storybook 实例）
 │   ├── web/                     # 主应用：主应用程序的代码，如 Web 前端部分
 │   │   ├── public/              # 静态资源目录，存放公共的静态文件，如图片、字体等
@@ -13,9 +13,9 @@ x z l/
 │   │   ├── .env                 # 环境变量配置文件，用于管理不同环境下的配置（如开发、生产
 │   │   ├── .gitignore           # Git 忽略文件，指定 Git 应该忽略哪些文件和文件夹
 │   │   ├── package.json         # `web` 应用的 `package.json` 文件，包含该应用的依赖和
-│   │   ├── tsconfig.json        # `web` 应用的 TypeScript 配置文件，定义该应用的编译选
+│   │   ├── tsconfig.json        # `web` 应用的 TypeScript 配置文件，定义该应用的编译选项
 │   │   └── webpack.config.js    # `web` 应用的 Webpack 配置文件，用于打包该应用
-│   └── docs/                    # Storybook 实例：用于展示组件库的 Storybook 配置和实
+│   └── docs/                    # Storybook 实例：用于展示组件库的 Storybook 配置和实现
 │       ├── public/              # 静态资源目录，存放公共的静态文件，如图片、字体等
 │       ├── src/                 # 组件展示和故事定义源代码目录
 │       │   ├── stories/         # 存放 Storybook 故事文件（UI 组件的展示）
@@ -44,10 +44,11 @@ x z l/
 ├── .github/workflows/           # GitHub Actions 配置目录，用于 CI/CD 自动化工作流
 │   ├── build.yml                # 构建工作流配置文件，定义如何自动构建项目
 │   ├── deploy.yml               # 部署工作流配置文件，定义如何自动将项目部署到生产环境
-│   └── test.yml 
+│   └── test.yml                 # 测试工作流配置文件，定义如何自动运行测试
 ├── .changeset/                  # Changesets 变更记录目录
 │   ├── config.json              # Changesets 配置文件，定义版本策略、发布方式等
 │   ├── fine-colts-feel.md       # 自动生成的变更说明文件
 ├── turbo.json                   # Turborepo 配置文件，用于定义多个包的构建和开发流程
 ├── package.json                 # 根级别的 `package.json` 文件，包含根依赖，通常会定义
 └── tsconfig.base.json           # TypeScript 基础配置文件，配置项目的 TypeScript 编译规则，通常会供多个子项目使用
+```
