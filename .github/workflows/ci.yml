@@ -34,7 +34,7 @@ jobs:
       - name: Run lint, test, build
         run: |
           pnpm turbo run lint --continue
-          pnpm turbo run test --continue --if-present
+          pnpm turbo run test --continue -- --if-present
           pnpm turbo run build --continue
 
   release:
