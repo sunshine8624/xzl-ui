@@ -1,0 +1,14 @@
+# package.json 字段说明
+- `name`: 项目的名称
+- `version`: 当前子包的版本号，初始为 `0.1.0`，用于版本管理（可配合 Changesets）。
+- `type`:   模块类型，这里设置为 `"module"`，表示该项目使用 ECMAScript Module 语法
+- `private`: 防止此包被意外发布到 npm
+- `scripts`: 定义可执行的脚本
+  - `dev`: 启动 Next.js 开发服务器，使用 `Turbopack` 构建器，监听端口为 `3001
+  - `build`: 构建 Next.js 应用（生成生产环境代码）。
+  - `start`: 启动构建好的 Next.js 应用。
+  - `check-types`: 执行所有子包的 TypeScript 类型检查（tsc --noEmit）
+  - `storybook`: 启动本地 Storybook 服务（默认端口为 `6006`）用于组件预览
+  - `build-storybook`: 构建 Storybook 的静态站点到 `storybook-static` 目录，便于部署（如部署到 GitHub Pages）。
+- `devDependencies`: 开发依赖
+  - `@repo/ui`: 引用本地工作空间中的 UI 组件库。）

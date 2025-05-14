@@ -1,0 +1,16 @@
+# package.json 字段说明
+- `name`: 项目的名称
+- `private`: 防止此包被意外发布到 npm
+- `scripts`: 定义可执行的脚本
+  - `build`: 执行所有子包中的 build 脚本
+  - `dev`: 启动所有支持 dev 的子包，常用于开发模式
+  - `lint`: 执行所有子包的 ESLint 检查
+  - `format`: 使用 Prettier 格式化代码
+  - `check-types`: 执行所有子包的 TypeScript 类型检查（tsc --noEmit）
+- `devDependencies`: 开发依赖
+  - `@changesets/cli`: 用于管理版本变更日志（如发布组件库时）
+  - `prettier`: 代码格式化工具
+  - `turbo`: Turborepo 执行器，支持任务缓存与并发构建
+  - `typescript`: TypeScript
+- `packageManager`: 使用的包管理器
+- `engines`: 需要的 Node.js 版本
