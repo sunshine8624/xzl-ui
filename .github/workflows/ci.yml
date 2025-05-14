@@ -29,7 +29,7 @@ jobs:
         # 步骤 3：安装所有依赖（Monorepo 项目会自动递归安装）
 
       - name: Run lint, test, build
-        run: pnpm turbo run lint test build --filter=...
+        run: pnpm turbo run lint test build
         # 步骤 4：通过 turbo 执行 lint、test、build 三个任务
         # --filter=... 表示会对所有受影响的项目进行操作（例如在 PR 中被改动的包）
         # turbo 会根据依赖关系自动判断哪些子包受影响
