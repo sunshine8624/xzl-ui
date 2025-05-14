@@ -1,18 +1,35 @@
+# 文件名：.github/workflows/ci.yml 发布到npm 节省重复操作（不需要手动打包 & 发布）结合 Changesets 可实现自动语义化发布
+# 名称：CI（持续集成）📦 比如：每次你合并 release 分支，就自动打包发布 @xzl/ui 到 npm
 name: CI
 
+# 触发条件：当代码 push 或 pull request 到 release 分支时触发
 on:
   push:
-    branches: [main]
+    branches: [release]       # 当有提交推送到 release 分支
   pull_request:
-    branches: [main]
+    branches: [release]       # 当有 PR 合并到 release 分支
 
 jobs:
-  install-and-test:
-    runs-on: ubuntu-latest
+  install-and-test:           # 作业名称：安装依赖并执行测试
+    runs-on: ubuntu-latest    # 运行环境：在最新版的 Ubuntu Linux 上运行
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
+      - name: Checkout code
+        uses: actions/checkout@v3
+        # 步骤 1：拉取代码仓库内容（默认会拉当前 commit）
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v2
         with:
           version: 8
-      - run: pnpm install
-      - run: pnpm turbo run lint test build --filter=...
+        # 步骤 2：设置 pnpm 包管理器并指定使用版本 8
+
+      - name: Install dependencies
+        run: pnpm install
+        # 步骤 3：安装所有依赖（Monorepo 项目会自动递归安装）
+
+      - name: Run lint, test, build
+        run: pnpm turbo run lint test build --filter=...
+        # 步骤 4：通过 turbo 执行 lint、test、build 三个任务
+        # --filter=... 表示会对所有受影响的项目进行操作（例如在 PR 中被改动的包）
+        # turbo 会根据依赖关系自动判断哪些子包受影响
