@@ -8,6 +8,16 @@
     ".": {
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
+    },
+    "./button": {
+      "import": "./dist/button.js",
+      "require": "./dist/button.cjs",
+      "types": "./dist/button.d.ts"
+    },
+    "./input": {
+      "import": "./dist/input.js",
+      "require": "./dist/input.cjs",
+      "types": "./dist/input.d.ts"
     }
   },
   "scripts": {
