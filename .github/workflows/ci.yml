@@ -33,9 +33,9 @@ jobs:
       # 👇 第四步：执行 lint、test、build，跳过不存在的 test 脚本
       - name: Run lint, test, build
         run: |
-          pnpm turbo run lint --continue --if-present
-          pnpm turbo run test --continue --if-present
-          pnpm turbo run build --continue --if-present
+          pnpm turbo run lint --continue -- --if-present
+          pnpm turbo run test --continue -- --if-present
+          pnpm turbo run build --continue -- --if-present
   release:
     # 👇 仅在 install-and-test 成功后执行
     needs: install-and-test
