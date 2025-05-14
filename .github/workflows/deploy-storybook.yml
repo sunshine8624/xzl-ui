@@ -27,14 +27,15 @@ jobs:
         run: pnpm install
 
       - name: Build Storybook
-        run: pnpm --filter @repo/ui build-storybook -o storybook-static
-        working-directory: packages/ui
+        run: pnpm build-storybook
+        working-directory: apps/docs
 
       - name: Add .nojekyll to bypass Jekyll on GitHub Pages
-        run: touch packages/ui/storybook-static/.nojekyll # 添加 （跳过）.nojekyll 文件 GitHub Pages 默认会用 Jekyll 去构建你的仓库，但你的仓库不是 Jekyll 项目（它是前端组件库 Monorepo）
+        run: touch storybook-static/.nojekyll # 添加 （跳过）.nojekyll 文件 GitHub Pages 默认会用 Jekyll 去构建你的仓库，但你的仓库不是 Jekyll 项目（它是前端组件库 Monorepo）
+        working-directory: apps/docs
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}   
-          publish_dir: packages/ui/storybook-static
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: apps/docs/storybook-static
