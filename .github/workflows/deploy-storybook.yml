@@ -1,41 +1,49 @@
 name: Deploy Storybook to GitHub Pages
 
+# 当 push 到 release 分支时触发该工作流
 on:
   push:
     branches:
-      - release # 每次 push 到 release 时触发部署
+      - release
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # 使用最新版 Ubuntu 作为运行环境
 
     steps:
+      # 第一步：拉取代码
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # 第二步：设置 Node.js 环境（使用 Node.js 20）
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
+      # 第三步：安装 pnpm 包管理器（使用 pnpm v8）
       - name: Set up pnpm
         uses: pnpm/action-setup@v2
         with:
           version: 8
 
+      # 第四步：安装依赖
       - name: Install dependencies
         run: pnpm install
 
+      # 第五步：构建 Storybook（生成静态文件）
       - name: Build Storybook
         run: pnpm build-storybook
-        working-directory: apps/docs
+        working-directory: apps/docs # 指定 docs 子目录为工作目录
 
+      # 第六步：添加 `.nojekyll` 文件，避免 GitHub Pages 使用 Jekyll 处理静态资源
       - name: Add .nojekyll to bypass Jekyll on GitHub Pages
-        run: touch storybook-static/.nojekyll # 添加 （跳过）.nojekyll 文件 GitHub Pages 默认会用 Jekyll 去构建你的仓库，但你的仓库不是 Jekyll 项目（它是前端组件库 Monorepo）。
+        run: touch storybook-static/.nojekyll
         working-directory: apps/docs
 
+      # 第七步：将构建好的 Storybook 部署到 GitHub Pages（gh-pages 分支）
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: apps/docs/storybook-static
+          github_token: ${{ secrets.GITHUB_TOKEN }} # 使用 GitHub 自动生成的 token
+          publish_dir: apps/docs/storybook-static    # 指定发布目录（Storybook 的输出目录）

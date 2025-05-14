@@ -1,5 +1,5 @@
 ---
-"@repo/ui": major
+"@xzl/ui": major
 "docs": major
 ---
 
