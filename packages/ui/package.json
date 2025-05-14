@@ -12,6 +12,7 @@
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
+    "test": "echo 'no test script'",
     "changName": "sed -i '' 's#@xzl/ui#@xzl/ui#' package.json",
     "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit",
