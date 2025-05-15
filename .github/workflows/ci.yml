@@ -66,4 +66,4 @@ jobs:
           publish: pnpm release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   # 内置 GitHub Token 用于提交 PR
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}         # 你在 GitHub 设置中的 NPM Token（用于 npm publish）
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}         # 你在 GitHub 设置中的 NPM Token（用于 npm publish）
