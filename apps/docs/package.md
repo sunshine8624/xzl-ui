@@ -11,4 +11,4 @@
   - `storybook`: 启动本地 Storybook 服务（默认端口为 `6006`）用于组件预览
   - `build-storybook`: 构建 Storybook 的静态站点到 `storybook-static` 目录，便于部署（如部署到 GitHub Pages）。
 - `devDependencies`: 开发依赖
-  - `@xzl/ui`: 引用本地工作空间中的 UI 组件库。）
+  - `@xzlproject/ui`: 引用本地工作空间中的 UI 组件库。）

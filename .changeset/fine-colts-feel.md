@@ -1,5 +1,5 @@
 ---
-"@xzl/ui": major
+"@xzlproject/ui": major
 "docs": major
 ---
 
