@@ -1,0 +1,34 @@
+name: Publish on Release Branch  # 工作流名称，显示在 GitHub Actions UI 中
+
+on:
+  push:
+    branches:
+      - release  # 监听 release 分支的 push 操作触发发布流程
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest  # 使用 GitHub 提供的 Ubuntu 最新环境
+
+    steps:
+      - uses: actions/checkout@v3  # 拉取代码仓库内容
+
+      - name: Install deps
+        run: pnpm install  # 安装依赖
+
+      - name: Create versions and changelogs
+        run: pnpm changeset version  # 基于 .changeset 文件生成版本号和 changelog
+
+      - name: Build packages
+        run: pnpm build  # 构建打包（确保有对应的构建脚本）
+
+      - name: Publish to npm
+        run: pnpm changeset publish  # 发布到 npm
+
+      - name: Push tags and version changes
+        run: |
+          git config user.name "github-actions[bot]"  # 设置提交人信息
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .  # 添加变更
+          git commit -m "chore: release packages"  # 提交变更
+          git push origin release --follow-tags  # 推送代码和 tags
