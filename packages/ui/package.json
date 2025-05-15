@@ -29,6 +29,9 @@
     "build": "tsc --project tsconfig.json",
     "prepublishOnly": "npm run build"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "files": [
     "dist"
   ],
