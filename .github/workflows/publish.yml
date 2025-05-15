@@ -28,6 +28,8 @@ jobs:
         run: pnpm build  # 构建打包（确保有对应的构建脚本）
 
       - name: Publish to npm
+        env:
+            NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: pnpm changeset publish  # 发布到 npm
 
       - name: Push tags and version changes
