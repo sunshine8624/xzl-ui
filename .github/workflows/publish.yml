@@ -13,6 +13,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3  # 拉取代码仓库内容
 
+      - name: Install pnpm
+        run: npm install -g pnpm
+        
       - name: Install deps
         run: pnpm install  # 安装依赖
 
