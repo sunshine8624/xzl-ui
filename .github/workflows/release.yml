@@ -12,12 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          registry-url: 'https://registry.npmjs.org'
-
       - uses: pnpm/action-setup@v2
         with:
           version: 8
@@ -27,7 +21,7 @@ jobs:
       - name: Create release PR or publish packages
         uses: changesets/action@v1
         with:
-          publish: pnpm run release
+          publish: true
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
